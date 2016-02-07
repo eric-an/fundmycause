@@ -1,0 +1,3 @@
+class CausesController < ApplicationController
+
+end
