@@ -1,0 +1,10 @@
+<%= @cause.name %>
+
+<form method="POST" action="/cause/<%= @cause.id %>/join">
+<input type="submit" value="Join this Cause">
+</form>
+
+<form method="POST" action="/cause/<%= @cause.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete cause">
+</form>

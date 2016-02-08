@@ -1,0 +1,32 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<%= @user.name %>
+
+<%= @user.email %>
+
+<h2>Edit Causes You created:</h2>
+<% @user.causes.each do |cause| %>
+  <% if cause.users.first == @user %>
+    <p><%= cause.name %></p>
+    <p><%= cause.description %></p>
+    <a href="/cause/<%= cause.id %>/edit">Edit Cause</a>
+    <form method="POST" action="/cause/<%= cause.id %>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete cause">
+    </form>
+    <br>
+  <% end %>
+<% end %>
+
+<h2>All of Your Causes:</h2>
+<% @user.causes.each do |cause| %>
+  <p>Name: <%= cause.name %></p>
+  <p>Description: <%= cause.description %></p>
+  <p>Amount Needed: <%= cause.funding %></p>
+  <form method="POST" action="/cause/<%= cause.id %>/remove">
+    <input type="submit" value="remove cause">
+  </form>  
+  <br>
+<% end %>

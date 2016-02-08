@@ -1,0 +1,14 @@
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
+<h1>All causes</h1>
+
+<% @causes.each do |cause| %>
+  <p><%= cause.name %></p>
+  <p><a href="/cause/<%= cause.id %>">View</a></p>
+  Supporters:
+  <% cause.users.each do |user| %>
+  <%= user.name %>
+  <% end %>
+<% end %>
