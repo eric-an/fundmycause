@@ -1,0 +1,90 @@
+body {
+      min-width: 630px;
+    }
+
+    #container {
+      padding-left: 200px;
+      padding-right: 190px;
+    }
+    
+    #container .column {
+      position: relative;
+      float: left;
+    }
+    
+    #center {
+      padding: 10px 20px;
+      width: 100%;
+    }
+    
+    #left {
+      width: 170px;
+      padding: 0 24px;
+      right: 200px;
+      margin-left: -100%;
+    }
+    
+    #right {
+      width: 130px;
+      padding: 0 27px;
+      left: 60px;
+      margin-right: -100%;
+    }
+    
+    /* IE hack */
+    * html #left {
+      left: 150px;
+    }
+
+    /* Make the columns the same height as each other */
+    #container {
+      overflow: hidden;
+    }
+
+    #container .column {
+      padding-bottom: 1031em;
+      margin-bottom: -1000em;
+    }
+
+    /* Aesthetics */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family:Sans-serif;
+      line-height: 1.5em;
+    }
+    
+    p {
+      color: #555;
+    }
+
+    nav {
+      padding: 7px;
+      float: right;
+    }
+
+    #header {
+      font-size: 2.5em;
+      padding: .7em;
+      background: #BCCE98;
+    }
+
+    #left {
+      background: #DAE9BC;
+    }
+    
+    #right {
+      background: #F7FDEB;
+    }
+
+    #center {
+      background: #fff;
+    }
+
+    #container .column {
+      padding-top: 1em;
+    }
+
+    #welcome {
+      text-align: center;
+    }

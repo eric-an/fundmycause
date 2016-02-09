@@ -1,0 +1,19 @@
+<div id="container">
+
+  <main id="center" class="column">
+    <div>
+      <h3>Category Index</h3>
+      <br>
+        <% @categories.each do |category| %>
+          <p><%= category.name %></p>
+        <% end %>
+    </div>             
+  </main>
+
+  <nav id="left" class="column">
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+
+</div>

@@ -1,32 +1,52 @@
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+<div id="container">
 
-<%= @user.name %>
+  <main id="center" class="column">
+    <% unless locals.empty? %>
+      <%= message %>
+    <% end %>
 
-<%= @user.email %>
+    <h2>Welcome, <%= @user.name %>!</h2>
 
-<h2>Edit Causes You created:</h2>
-<% @user.causes.each do |cause| %>
-  <% if cause.users.first == @user %>
-    <p><%= cause.name %></p>
-    <p><%= cause.description %></p>
-    <a href="/cause/<%= cause.id %>/edit">Edit Cause</a>
-    <form method="POST" action="/cause/<%= cause.id %>/delete">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete cause">
-    </form>
+    <p>Your email: <%= @user.email %></p>
     <br>
-  <% end %>
-<% end %>
+    <h3>Your Causes:</h3>
+    <br>
+    <% @user.causes.each do |cause| %>
+      <% if cause.users.first == @user %>
+        <p>Name: <%= cause.name %></p>
+        <p>Description:<%= cause.description %></p>
+        <p>Amount Needed: $<%= cause.funding %></p>
+        <a href="/cause/<%= cause.id %>/edit">edit cause</a>
+        <form method="POST" action="/cause/<%= cause.id %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete cause">
+        </form>
+        <br>
+        <br>
+      <% end %>
+    <% end %>
 
-<h2>All of Your Causes:</h2>
-<% @user.causes.each do |cause| %>
-  <p>Name: <%= cause.name %></p>
-  <p>Description: <%= cause.description %></p>
-  <p>Amount Needed: <%= cause.funding %></p>
-  <form method="POST" action="/cause/<%= cause.id %>/remove">
-    <input type="submit" value="remove cause">
-  </form>  
-  <br>
-<% end %>
+    <h3>Causes You Joined:</h3>
+    <br>
+    <br>
+
+    <% @user.causes.each do |cause| %>
+      <% if cause.users.first != @user %>
+        <p>Name: <%= cause.name %></p>
+        <p>Description: <%= cause.description %></p>
+        <p>Amount Needed: <%= cause.funding %></p>
+        <form method="POST" action="/cause/<%= cause.id %>/remove">
+          <input type="submit" value="remove cause">
+        </form>  
+        <br>
+      <% end %>
+    <% end %>             
+  </main>
+
+  <nav id="left" class="column">
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+
+</div>

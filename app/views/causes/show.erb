@@ -1,10 +1,27 @@
-<%= @cause.name %>
+<div id="container">
 
-<form method="POST" action="/cause/<%= @cause.id %>/join">
-<input type="submit" value="Join this Cause">
-</form>
+  <main id="center" class="column">
+    <h2><%= @cause.name %></h2>
+    <br>
+    <p>Description: <%= @cause.description %></p>
+    <p>Amount needed: <%= @cause.funding %></p>
+    <p>Category: <%= @cause.category.name if @cause.category != nil %></p>
+    <% if logged_in? && @cause.users.first != @user %>
+    <form method="POST" action="/cause/<%= @cause.id %>/join">
+    <input type="submit" value="Join this Cause">
+    </form>
+    <% elsif logged_in? && @cause.users.first == @user %>
+      <form method="POST" action="/cause/<%= @cause.id %>/delete">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Cause">
+      </form>
+    <% end %>  
+  </main>
 
-<form method="POST" action="/cause/<%= @cause.id %>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete cause">
-</form>
+  <nav id="left" class="column">
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+
+</div>

@@ -1,30 +1,43 @@
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+<div id="container">
 
-<form method="POST" action="/causes/new">
-<h3><label>Cause Name:</label></h3>
-<input id="cause_name" type="text" name="cause[name]">
-<br>
-<br>
-<h3><label>Description:</label></h3>
-<textarea id="cause_description" type="text" name="cause[description]"></textarea>
-<br>
-<br>
-<h3><label>Amount Needed:</label></h3>
-<input id="cause_funding" type="number" name="cause[funding]">
-<br>
-<br>
-<h3><label>Choose a category:</label></h3>
-<% Category.all.each do |category| %>
-  <p><input id="title_<%= category.id %>" name="cause[category_id]" type="radio" value="<%= category.id %>"> <%= category.name %></p>
-<% end %>
-<input type="reset" value="Reset Form">
-<br>
-<br>
-<label>Create a New Category:</label>
-<input id="category[name]" type="text" name="new_category">
-<br>
-<br>
-<input type="submit" value="Create New Cause">
-</form>
+  <main id="center" class="column">
+    <% unless locals.empty? %>
+      <%= message %>
+    <% end %>
+    <h2>Create a New Cause</h2>
+    
+    <form method="POST" action="/causes/new">
+      <h3><label>Cause Name:</label></h3>
+      <input id="cause_name" type="text" name="cause[name]">
+      <br>
+      <br>
+      <h3><label>Description:</label></h3>
+      <textarea id="cause_description" type="text" name="cause[description]"></textarea>
+      <br>
+      <br>
+      <h3><label>Amount Needed:</label></h3>
+      $<input id="cause_funding" type="number" name="cause[funding]">
+      <br>
+      <br>
+      <h3><label>Choose a category:</label></h3>
+      <% Category.all.each do |category| %>
+        <p><input id="title_<%= category.id %>" name="cause[category_id]" type="radio" value="<%= category.id %>"> <%= category.name %></p>
+      <% end %>
+      <input type="reset" value="Reset Form">
+      <br>
+      <br>
+      <label>Create a New Category:</label>
+      <input id="category[name]" type="text" name="new_category">
+      <br>
+      <br>
+      <input type="submit" value="Create New Cause">
+    </form>             
+  </main>
+
+  <nav id="left" class="column">
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+
+</div>

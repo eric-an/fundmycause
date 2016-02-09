@@ -1,14 +1,34 @@
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
-
-<h1>All causes</h1>
-
-<% @causes.each do |cause| %>
-  <p><%= cause.name %></p>
-  <p><a href="/cause/<%= cause.id %>">View</a></p>
-  Supporters:
-  <% cause.users.each do |user| %>
-  <%= user.name %>
+<div id="container">
+  <main id="center" class="column">
+  <% unless locals.empty? %>
+    <%= message %>
   <% end %>
-<% end %>
+
+  <h1> All Causes</h1>
+  <br>
+    <div>
+      <% @causes.each do |cause| %>
+        <h3><%= cause.name %></h3>
+        Supporters:
+        <% cause.users.each do |user| %>
+        <%= user.name %> |
+        <% end %>
+        <p><a href="/cause/<%= cause.id %>">View Details</a></p>
+        <br>
+      <% end %>
+    </div>              
+  </main>
+
+  <nav id="left" class="column">
+    <h3>Categories</h3>
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= category.name %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+
+</div>

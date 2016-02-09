@@ -1,19 +1,30 @@
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+<div id="container">
 
-<h1>Create a New User</h1>
+  <main id="center" class="column">
+    <% unless locals.empty? %>
+      <%= message %>
+    <% end %>
 
-<form method="POST" action="/signup">
-<label>Email:</label>
-<input id="email" type="email" name="email"><br>
-<br>
-<label>Password:</label>
-<input id="password" type="password" name="password"><br>
-<br>
-<label>Name:</label>
-<input id="password" type="text" name="name"><br>
-<br>
-<input type="submit" value="Sign Up">
-</form>
+    <h1>Create a New User</h1>
+
+      <form method="POST" action="/signup">
+      <label>Email:</label>
+      <input id="email" type="email" name="email" placeholder="example@email.com"><br>
+      <br>
+      <label>Password:</label>
+      <input id="password" type="password" name="password" placeholder="password"><br>
+      <br>
+      <label>Name:</label>
+      <input id="password" type="text" name="name" placeholder="name"><br>
+      <br>
+      <input type="submit" value="Sign Up">
+      </form>
+  </main>
+
+  <nav id="left" class="column">
+  </nav>
+
+  <div id="right" class="column">
+  </div>
+</div>
 
