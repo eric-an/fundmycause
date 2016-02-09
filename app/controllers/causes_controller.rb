@@ -2,6 +2,7 @@ class CausesController < ApplicationController
 
   get '/causes' do
     @causes = Cause.all
+    @categories = Category.all
     erb :"causes/index"
   end
 
@@ -34,6 +35,7 @@ class CausesController < ApplicationController
 
   get '/cause/:id' do
     @cause = Cause.find_by(id: params[:id])
+    @user = current_user if logged_in?
     erb :"causes/show"
   end
 
