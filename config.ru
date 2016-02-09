@@ -1,5 +1,7 @@
 require './config/environment'
-require './app/controllers/application_controller'
 
 use Rack::MethodOverride
+use CategoriesController
+use CausesController
+use UsersController
 run ApplicationController
