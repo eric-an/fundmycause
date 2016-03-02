@@ -6,11 +6,12 @@
     <p>Description: <%= @cause.description %></p>
     <p>Amount needed: <%= @cause.funding %></p>
     <p>Category: <%= @cause.category.name if @cause.category != nil %></p>
-    <% if logged_in? && @cause.users.first != @user %>
+
+    <% if logged_in? && @cause.created_by_user != @user.id %>
     <form method="POST" action="/cause/<%= @cause.id %>/join">
     <input type="submit" value="Join this Cause">
     </form>
-    <% elsif logged_in? && @cause.users.first == @user %>
+    <% elsif logged_in? && @cause.created_by_user == @user.id %>
       <form method="POST" action="/cause/<%= @cause.id %>/delete">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Cause">

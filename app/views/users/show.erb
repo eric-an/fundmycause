@@ -12,7 +12,7 @@
     <h3>Your Causes:</h3>
     <br>
     <% @user.causes.each do |cause| %>
-      <% if cause.users.first == @user %>
+      <% if cause.created_by_user == @user.id %>
         <p>Name: <%= cause.name %></p>
         <p>Description:<%= cause.description %></p>
         <p>Amount Needed: $<%= cause.funding %></p>
@@ -31,7 +31,7 @@
     <br>
 
     <% @user.causes.each do |cause| %>
-      <% if cause.users.first != @user %>
+      <% if cause.created_by_user != @user.id %>
         <p>Name: <%= cause.name %></p>
         <p>Description: <%= cause.description %></p>
         <p>Amount Needed: <%= cause.funding %></p>

@@ -11,7 +11,7 @@
         <h3><%= cause.name %></h3>
         Supporters:
         <% cause.users.each do |user| %>
-        <%= user.name %> |
+        <%= user.name %>
         <% end %>
         <p><a href="/cause/<%= cause.id %>">View Details</a></p>
         <br>
