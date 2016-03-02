@@ -17,6 +17,7 @@ class CausesController < ApplicationController
   post '/causes/new' do
     @user = current_user
     @cause = Cause.new(name: params[:cause][:name])
+    @cause.created_by_user = @user.id
     @cause.description = params[:cause][:description]
     @cause.funding = params[:cause][:funding]
     if params[:cause][:category_id]
@@ -43,7 +44,7 @@ class CausesController < ApplicationController
     if logged_in?
       @user = current_user
       @cause = Cause.find_by(id: params[:id])
-      @user.causes << @cause if !@user.causes.include?(@cause)
+      @cause.users << @user if !@cause.users.include?(@user)
       redirect to "/user/#{@user.id}"
     else
       redirect to '/login'
@@ -54,7 +55,7 @@ class CausesController < ApplicationController
     if logged_in?
       @user = current_user
       @cause = Cause.find_by(id: params[:id])
-      if @cause.users.first == @user
+      if @cause.created_by_user == @user.id
         erb :"causes/edit"
       else
         redirect to '/causes'
