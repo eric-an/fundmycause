@@ -69,6 +69,10 @@ body {
       background: #BCCE98;
     }
 
+    #header a {
+      text-decoration: none;
+    }
+
     #left {
       background: #DAE9BC;
     }
