@@ -98,7 +98,7 @@ class CausesController < ApplicationController
     if logged_in?
       @user = current_user
       @cause = Cause.find_by(id: params[:id])
-      if @cause.users.first == @user
+      if @cause.created_by_user == @user.id
         @cause.destroy
         erb :"users/show", locals: {message: "The cause was deleted."}
       else
